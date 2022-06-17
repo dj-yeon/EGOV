@@ -22,8 +22,7 @@
 </style>
 
 <script>
-function fn_submit() {
-	
+function fn_submit() {	
 	if(document.frm.name.value == "") {
 		alert("코드명을 입력해주세요.");
 		document.frm.name.focus();
@@ -56,11 +55,6 @@ function fn_submit() {
 		</th>
 	</tr>
 </table>
-
-
-
 </form>
-
-
 </body>
 </html>

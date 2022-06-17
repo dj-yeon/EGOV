@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
 
 <sqlMap namespace="CodeSpace">
 
-	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/> //DB 목록을 담음
-	<typeAlias  alias="codeVO" type="egovframework.example.sample.service.CodeVO"/>	//
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>  
+	<typeAlias  alias="CodeVO" type="egovframework.example.sample.service.CodeVO"/>
 	
 	<insert id="codeDAO.insertCodes">
-		
-		INSERT INTO codes(cod,gid,name)
-			VALUES(codes_seq,#gid#,#name#)
-	
+		INSERT INTO codes(code,gid,name)
+			VALUES(codes_seq.nextval,#gid#,#name#) 
 	</insert>
-
+	
+	<select id="codeDAO.selectCodesList" resultClass="egovMap">
+		SELECT code, 
+			   decode(gid,'1','JOB','2','HOBBY') gid,
+			   name
+			   
+		  FROM codes
+		  ORDER BY gid ASC
+			  				 
+		
+	</select>
+	
 </sqlMap>

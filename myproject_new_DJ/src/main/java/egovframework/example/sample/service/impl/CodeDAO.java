@@ -1,5 +1,7 @@
 package egovframework.example.sample.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import egovframework.example.sample.service.CodeVO;
@@ -10,6 +12,10 @@ public class CodeDAO extends EgovAbstractDAO {
 
 	public String insertCodes(CodeVO vo) {
 		return (String) insert("codeDAO.insertCodes",vo); // id 값은 임의로 작성해도 됨.
+	}
+
+	public List<?> selectCodesList(CodeVO vo) {
+		return list("codeDAO.selectCodesList",vo);
 	}
 	
 }
