@@ -14,7 +14,6 @@
 </head>
 
 <style>
-
 	table {
 	width:400px;
 	border-collapse:collapse; /* 셀 사이의 간격 없앰 */
@@ -24,21 +23,38 @@
 		boarder:1px solid #cccccc;
 		padding:5px;
 	}
-
 </style>
+
+<script language="javascript">
+	function fn_delete(code) {		
+		if( confirm("정말 삭제하시겠습니까?") ) {
+			location = "codeDelete.do?code="+code;		
+		}
+	}
+	
+	function fn_update(code) {
+		location = "codeModifyWrite.do?code="+code;
+	}
+</script>
 
 <body>
 <table>
-	<caption>코드목록</caption>
+	<caption>
+		<div>코드목록
+		</div>
+	</caption> <br>	
+	<div style="width:100%; text-align:left;">Total : ${resultTotal } 개</div>	
 	<colgroup> <!-- 테이블 넓이 -->
-		<col width="20%"/>
-		<col width="40%"/>
-		<col width="40%"/>
+		<col width="14%"/>
+		<col width="26%"/>
+		<col width="30%"/>
+		<col width="30%"/>
 	</colgroup>
 	<tr>
 		<th>번호</th>
 		<th>그룹명</th>
 		<th>코드명</th>
+		<th>구분</th>
 	</tr>
 	
 	<c:set var="count" value="1" /> <!-- JSTL로 변수 생성 -->	
@@ -48,6 +64,10 @@
 			<td><c:out value="${count }" /></td>			
 			<td>${list.gid }</td>
 			<td>${list.name }</td>
+			<td>
+				<button type="button" onclick="fn_update('${list.code}')">수정</button>
+				<button type="button" onclick="fn_delete('${list.code}')">삭제</button>
+			</td>
 		</tr>	
 		<c:set var="count" value="${count+1 }"/>
 	</c:forEach>

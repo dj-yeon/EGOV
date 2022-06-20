@@ -45,18 +45,42 @@ public class CodeController {
 	@RequestMapping(value="/codeList.do")
 	public String selectCodeList(CodeVO vo, ModelMap model) throws Exception {
 		
+		int total = codeService.selectCodesCount(vo);
+				
 		List<?> list = codeService.selectCodesList(vo);
 		
 		System.out.println("list =====> " + list);
 		
+		model.addAttribute("resultTotal",total); //화면에 뿌리려면 model 사용
 		model.addAttribute("resultList",list);
 		
 		return "code/codeList";
 	}
 	
+	@RequestMapping(value="/codeDelete.do")
+	public String deleteCode(int code) throws Exception {
+		
+		int result = codeService.deleteCodes(code);
+		
+		return "redirect:codeList.do";
+	}	
 	
+	@RequestMapping(value="/codeModifyWrite.do")
+	public String selectCodesDetail(int code, ModelMap model) throws Exception{
+		
+		CodeVO vo = codeService.selectCodesDetail(code);
+		model.addAttribute("vo",vo );
+		
+		return "code/codeModifyWrite";		
+	}
 	
-	
+	@RequestMapping(value="/codeModifySave.do")
+	public String updateCodes(CodeVO vo) throws Exception {
+		
+		int result = codeService.updateCodes(vo);
+		
+		return "redirect:codeList.do";
+	}
 	
 	
 	

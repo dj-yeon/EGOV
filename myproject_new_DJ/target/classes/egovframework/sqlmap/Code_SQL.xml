@@ -16,11 +16,32 @@
 		SELECT code, 
 			   decode(gid,'1','JOB','2','HOBBY') gid,
 			   name
-			   
 		  FROM codes
-		  ORDER BY gid ASC
-			  				 
+		  ORDER BY gid ASC		 
 		
 	</select>
+	<select id="codeDAO.selectCodesCount" resultClass="java.lang.Integer"> 
+		SELECT COUNT(*) ctn FROM codes
+	</select>
 	
+	<delete id="codeDAO.deleteCodes">
+		DELETE FROM codes WHERE code=#code#
+	</delete>
+	
+	<select id="codeDAO.selectCodesDetail" resultClass="codeVO">
+		SELECT code,gid,name FROM codes 
+							WHERE code=#code#
+	</select>
+	
+	<update id="codeDAO.updateCodes">
+	
+		UPDATE codes SET gid=#gid#, name=#name#
+				   WHERE code=#code#
+	
+	</update>
+	
+	
+	
+		
 </sqlMap>
+

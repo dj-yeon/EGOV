@@ -72,11 +72,12 @@ public class DeptController {
 			System.out.println("수정완료");
 		} else {
 			System.out.println("수정실패");
-		}
-		
+		}	
 		return "";
 		
 	}
+	
+
 }
 
 

@@ -17,5 +17,21 @@ public class CodeDAO extends EgovAbstractDAO {
 	public List<?> selectCodesList(CodeVO vo) {
 		return list("codeDAO.selectCodesList",vo);
 	}
+
+	public int selectCodesCount(CodeVO vo) {
+		return (int) select("codeDAO.selectCodesCount",vo);
+	}
+
+	public int deleteCodes(int code) {
+		return delete("codeDAO.deleteCodes",code);
+	}
+
+	public CodeVO selectCodesDetail(int code) {
+		return (CodeVO) select("codeDAO.selectCodesDetail",code);
+	}
+
+	public int updateCodes(CodeVO vo) {
+		return (int) update("codeDAO.updateCodes",vo);
+	}
 	
 }
