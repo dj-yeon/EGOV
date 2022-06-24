@@ -20,7 +20,7 @@
 	}
 	
 	th, td {
-		boarder:1px solid #cccccc;
+		border:1px solid #cccccc;
 		padding:5px;
 	}
 

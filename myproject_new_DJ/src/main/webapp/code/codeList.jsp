@@ -20,7 +20,7 @@
 	}
 	
 	th, td {
-		boarder:1px solid #cccccc;
+		border:1px solid #cccccc;
 		padding:5px;
 	}
 </style>
@@ -73,6 +73,10 @@
 	</c:forEach>
 	
 </table>
+
+<div style="width:600px; margin-top:5px; text-align:right; ">
+	<button type="button" onclick="location='boardWrite.do'">글쓰기</button>
+</div>
 
 
 </body>
